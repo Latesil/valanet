@@ -1,16 +1,12 @@
 using Gtk;
 
-public class MyApp : Gtk.Window {
+public class MyApp {
 
     public Gtk.Builder builder;
     public Gtk.Label status_label;
 
     public MyApp() {
-        this.builder = new Builder();
-        this.builder.add_from_file("../gui/net.glade");
-        this.builder.get_object("window_main") as Window;
-        this.builder.connect_signals(this);
-        this.status_label = (Gtk.Label) builder.get_object("status_label");
+        
     }
 
     public void on_quit_option_activate() {
@@ -33,8 +29,12 @@ public class MyApp : Gtk.Window {
 public static int main(string[] args) {
     Gtk.init (ref args);
 
-    var window = new MyApp();
-    window.destroy.connect (Gtk.main_quit);
+    var builder = new Builder();
+    builder.add_from_file("../gui/net.glade");
+    var window = builder.get_object("window_main") as Window;
+    builder.connect_signals(new MyApp());
+    var status_label = (Gtk.Label) builder.get_object("status_label");
+    window.destroy.connect(Gtk.main_quit);
     window.show_all();
 
     Gtk.main();
