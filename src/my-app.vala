@@ -7,6 +7,7 @@ public class MyApp : GLib.Object {
     public Gtk.Label status_label;
     public Gtk.Button check1_btn;
     public Gtk.Button set_address1_btn;
+    public Gtk.Button get_address_btn;
     public Gtk.MenuItem quit_option_mi;
     public Gtk.MenuItem about_option_mi;
 
@@ -26,7 +27,7 @@ public class MyApp : GLib.Object {
         set_address1_btn = (Gtk.Button) builder.get_object("set_address1");
         quit_option_mi = (Gtk.MenuItem) builder.get_object("quit_option");
         about_option_mi = (Gtk.MenuItem) builder.get_object("about_option");
-
+        get_address_btn = (Gtk.Button) builder.get_object("get_address");
 
         check1_btn.clicked.connect(() => {
             handler.handler_on_check1_clicked(status_label);
@@ -42,6 +43,10 @@ public class MyApp : GLib.Object {
 
         about_option_mi.activate.connect(() => {
             handler.handler_on_about_option_activate();
+        });
+
+        get_address_btn.clicked.connect(() => {
+            handler.handler_on_get_address_clicked();
         });
     }
 

@@ -113,12 +113,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="change_status">
-                <property name="label" translatable="yes">button</property>
-                <property name="name">change_status</property>
+              <object class="GtkButton" id="get_address">
+                <property name="label" translatable="yes">Address</property>
+                <property name="name">get_address</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <signal name="clicked" handler="handler_on_get_address_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
