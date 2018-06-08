@@ -38,7 +38,7 @@
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
-                        <signal name="activate" handler="on_quit_option_activate" swapped="no"/>
+                        <signal name="activate" handler="handler_on_quit_option_activate" swapped="no"/>
                       </object>
                     </child>
                   </object>
@@ -62,7 +62,7 @@
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
-                        <signal name="activate" handler="on_about_option_activate" swapped="no"/>
+                        <signal name="activate" handler="handler_on_about_option_activate" swapped="no"/>
                       </object>
                     </child>
                   </object>
@@ -89,7 +89,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <signal name="clicked" handler="on_check1_clicked" swapped="no"/>
+                <signal name="clicked" handler="handler_on_check1_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -104,7 +104,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <signal name="clicked" handler="on_set_address1_clicked" swapped="no"/>
+                <signal name="clicked" handler="handler_on_set_address1_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
