@@ -1,34 +1,8 @@
 using Gtk;
 
-public class Handler : GLib.Object { 
-    public Handler() {
-    }
-
-    [CCode (instance_pos = -1)]
-    public void handler_on_quit_option_activate() {
-        stdout.printf("on_quit_option_activate\n");
-    }
-
-    [CCode (instance_pos = -1)]
-    public void handler_on_set_address1_clicked() {
-        stdout.printf("on_set_address1_clicked\n");
-    }
-
-    [CCode (instance_pos = -1)]
-    public void handler_on_check1_clicked(Gtk.Label status_label) {
-        (status_label.label != "yarrr") ?
-        (status_label.label) = "yarrr" : 
-        (status_label.label) = "StatusQuo";
-    }
-
-    [CCode (instance_pos = -1)]
-    public void handler_on_about_option_activate() {
-        stdout.printf("on_about_option_activate\n");
-    }
-}
-
 public class MyApp : GLib.Object { 
 
+    private string _UIPath = "../gui/net.glade";
     public Gtk.Window window_main;
     public Gtk.Label status_label;
     public Gtk.Button check1_btn;
@@ -40,7 +14,7 @@ public class MyApp : GLib.Object {
         var handler = new Handler();
         Builder builder = new Builder();
         try {
-            builder.add_from_file("../gui/net.glade");
+            builder.add_from_file(UIPath);
         } catch (Error e) {
             stderr.printf("%s", e.message);
         }
@@ -69,5 +43,10 @@ public class MyApp : GLib.Object {
         about_option_mi.activate.connect(() => {
             handler.handler_on_about_option_activate();
         });
+    }
+
+    public string UIPath {
+        get { return _UIPath; }
+        set { _UIPath = value; }
     }
 }
