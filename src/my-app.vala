@@ -16,11 +16,9 @@ public class Handler : GLib.Object {
 
     [CCode (instance_pos = -1)]
     public void handler_on_check1_clicked(Gtk.Label status_label) {
-        if (status_label.label != "yarrr") {
-            status_label.label = "yarrr";
-        } else {
-            status_label.label = "StatusQuo";
-        }
+        (status_label.label != "yarrr") ?
+        (status_label.label) = "yarrr" : 
+        (status_label.label) = "StatusQuo";
     }
 
     [CCode (instance_pos = -1)]
@@ -41,8 +39,13 @@ public class MyApp : GLib.Object {
     public MyApp() {
         var handler = new Handler();
         Builder builder = new Builder();
-        builder.add_from_file("../gui/net.glade");
+        try {
+            builder.add_from_file("../gui/net.glade");
+        } catch (Error e) {
+            stderr.printf("%s", e.message);
+        }
         window_main = builder.get_object("window_main") as Window;
+        window_main.title = "test title";
         window_main.destroy.connect(Gtk.main_quit);
         status_label = (Gtk.Label) builder.get_object("status_label");
         check1_btn = (Gtk.Button) builder.get_object("check1");
